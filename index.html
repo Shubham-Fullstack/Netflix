@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+      /* font-weight: 300; */
+      user-select: none;
+    }
+    
+     main{
+          display: flex;
+          flex-wrap: wrap;
+          align-items: flex-start;
+          background-color: rgb(35,35,35);
+          row-gap: 10px;
+     }
+     .first-page{
+      width: 100%;
+      height: 100vh;
+      background-image: url(background.jpg);
+      background-size: 100% 100vh;
+      backdrop-filter: brightness(10%);
+     }
+     .first-page > section{
+      width: 100%;
+      height: 100vh;
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0.226) 60%, rgba(0, 0, 0, 0.8) 100%);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: flex-start;
+      row-gap: 70px;
+     }
+     .first-page header{
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       width: 100%;
+       min-height: 40px;
+       /* background-color: red; */
+       padding: 10px 120px;
+     }
+     .first-page header figure{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+     }
+     .first-page header > form{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       column-gap: 25px;
+       /* background-color: orange; */
+     }
+     .first-page header input,select {
+      background-color: rgba(0, 0, 0, 0.082);
+      color: white;
+      outline: 0;
+      border: 0;
+      padding: 6px 10px;
+      text-transform: capitalize;
+      font-size: 16px;
+      border: 1px solid rgb(78, 78, 78);
+      outline: 2px solid rgb(0, 0, 0);
+      border-radius: 3px;
+     }
+     .first-page header select:hover{
+      box-shadow: 0 0 1px 4px rgb(255, 255, 255);
+     }
+     .first-page header input{
+      outline: 0;
+      border: 0;
+      background-color: rgb(221, 22, 22);
+     }
+     .first-page header input:hover{
+      box-shadow: none;
+      transition: background-color 0.2s linear;
+      background-color: rgb(136, 16, 16);
+     }
+     .details{
+      padding: 15px 10px;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      /* row-gap: 5px; */
+      flex-direction: column;
+      /* text-transform: capitalize; */
+      width: 1041px;
+      /* font-size: 26px; */
+     }
+     section .details> h1{
+      padding: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: 15px;
+      color: white;
+      justify-content: center;
+      font-size: 3rem;
+      text-align: center;
+     }
+     section .details > form{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       column-gap: 8px;
+       position: relative;
+       /* background-color: orange; */
+     }
+     section .details form label{
+      text-transform: capitalize;
+      /* font-size: 20px; */
+      color: rgba(255, 255, 255, 0.863); 
+      position: absolute;
+      top: 20px;
+      left: 50px;
+      transition: all 0.2s linear;
+      /* z-index: 1; */
+     }
+     section .details > form input{
+      background-color: rgba(0, 0, 0, 0);
+      color: white;
+      outline: 0;
+      border: 0;
+      padding: 25px 12px 7px 20px;
+      text-transform: capitalize;
+      font-size: 16px;
+      border: 1px solid rgb(78, 78, 78);
+      outline: 2px solid rgba(0, 0, 0, 0);
+      border-radius: 3px;
+      font-size: 20px;
+      font-weight: lighter;
+     }
+     section .details form input[type=text]{
+      width: 318px;
+      min-height: 10px;
+      text-transform: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-family: sans-serif;
+     }
+     section .details form input[type=text]:hover , input[type=text]:focus-visible{
+      box-shadow: 0 0 1px 3px rgb(255, 255, 255);
+      outline: 2px solid rgb(0, 0, 0);
+      cursor: pointer;
+      background-color: rgba(65, 65, 65, 0.397);
+     }
+     /* , input[type=text]:user-valid */
+     form:hover label{
+       transform: translate(0 , -12px);
+       font-size: 10px;
+    }
+    .details form input[type=submit]{
+      text-transform: capitalize; background-color: rgb(223, 17, 17); border: 0; outline: 0; box-shadow: none; padding:10px; height: 56px;
+    }
+    .details form input[type=submit]:hover{
+      background-color: rgb(150, 18, 18);
+    }
+    article{
+      width: 100%;
+      height: 70vh;
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 50px;
+      color: white;
+    }
+    article h2{
+      font-size: 40px;
+      width: 10px;
+      width: 460px;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: 5px;
+      text-align: start;
+    }
+    article span{
+      width: 460px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      font-size: 24px;
+      padding: 15px;
+      row-gap: 3px;
+      text-align: start;
+    }
+    article img{
+      width: 400px;
+      height: 310px;
+      background-image: url(background1.jpg);
+      background-size: 300px 180px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .FAQ{
+      display: flex;
+      width: 100%;
+      padding: 35px 20px;
+      flex-wrap: wrap;
+      row-gap: 10px;
+      min-height: 400px;
+      justify-content:flex-start;
+      align-items: center;
+      color: white;
+      flex-direction: column;
+      background-color: black;
+    }
+    .FAQ h2{
+      font-size: 3rem;
+      text-transform: capitalize;
+      padding: 20px 12px;
+    }
+    .FAQ .questions{
+      width: 80%;
+      min-height: 200px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-content: center;
+      row-gap: 5px;
+      /* height: ; */
+    }
+    .FAQ .questions .wrapper{
+      width: 100%;
+      display: flex;
+      /* flex-direction: column; */
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: flex-start;
+      row-gap: 3px;
+      padding: 4px;
+      min-height: 58px;
+      /* height: 194px; required*/
+      /* overflow: hidden; */
+      transition: height 0.3s linear;
+    }
+    /* .FAQ .questions .wrapper:hover{
+      height: 194px;
+    } */
+    .FAQ .questions .wrapper button{
+      padding: 15px;
+      width: 100%;
+      background-color: rgb(36, 36, 36);
+      border: 0;
+      color: white;
+      text-align: start;
+      text-transform: capitalize;
+      font-size: 24px;
+      box-shadow: 0 0 0 3px rgba(255, 0, 0, 0);
+      transition: box-shadow 0.2s linear , background-color 0.2s linear;
+      position: relative;
+    }
+    .FAQ .questions .wrapper button span{
+      position: absolute;
+      right: 49px;
+      top: 16px;
+    }
+    .FAQ .questions .wrapper button:hover{
+      box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.404);
+      background-color: rgb(63, 63, 63);
+      cursor: pointer;
+    }
+    .FAQ .questions .wrapper button:active{
+      opacity: 40%;
+      cursor: default;
+    }
+    .FAQ .questions .wrapper button span[class="fa-solid fa-plus"] {
+       transition: opacity 0.1s linear;
+    }
+    /* .FAQ .questions .wrapper button span[class="fa-solid fa-minus"]{
+           visibility: hidden;
+           opacity: 0;
+           transition: opacity 0.1s linear;
+           display: none;
+    } */
+    .FAQ .questions .wrapper p{
+      width: 100%;
+      text-align: justify;
+      color: white;
+      padding: 20px 15px;
+      background-color: rgb(36, 36, 36);
+      font-size: 20px;
+    }
+    .FAQ .questions .wrapper .para{
+      display: none;
+    }
+    footer{
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: center;
+      column-gap: 60px;
+      background-color: black;
+    }
+    footer ul{
+      list-style: none;
+      padding: 10px;
+    }
+    footer ul li{
+      padding: 10px 5px;
+      /* text-align: start; */
+      display: flex;
+      justify-content: start;
+   align-items: center;   
+   }
+   footer ul li a{
+    color: rgba(255,255,255,0.7);
+      text-decoration: underline;
+      text-transform: capitalize;
+   }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="first-page" name="this is background">
+          <section>
+            <header>
+              <figure>
+                <img src="logo.jpg" alt="logo" width="170px" height="80px">
+              </figure>
+              <form action="login.html" autocomplete="on" method="get" >
+                      <select name="" id="">
+                        <option value="">english</option>
+                        <option value="">hindi</option>
+                        <input type="submit" value="sign in">
+                      </select>
+              </form>
+          </header>
+           <div class="details">
+            <h1>Enjoy big movies, hit series and more from ₹ 149.</h1>
+            <span style="padding: 20px 0; font-size: 23px;">Join today. Cancel anytime.</span>
+            <span style="padding: 15px 0; font-size: 23px;">Ready to watch? Enter your email to create or restart your membership.</span>
+             <form action="">
+              <label for="inputText">enter your email</label>
+              <input type="text" id="inputText" required>
+              <input type="submit" value="getting started">
+             </form>
+           </div>
+          </section>
+    </div>
+    <article>
+         <div class="content">
+          <h2>Enjoy on your TV</h2>
+          <span>Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</span>
+         </div>
+         <figure>
+          <img src="background2.png" alt="" width="400px" height="310px">
+         </figure>
+    </article>
+    <article>
+      <figure>
+        <img src="background2.jpg" alt="" width="400px" height="310px">
+       </figure>
+      <div class="content">
+        <h2>Download your shows to watch offline</h2>
+        <span>Save your favourites easily and always have something to watch.</span>
+       </div>
+    </article>
+    <article>
+      <div class="content">
+        <h2>Watch everywhere</h2>
+        <span>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</span>
+       </div>
+      <figure>
+        <img src="background3.png" alt="" width="400px" height="310px" style="background-image: none;">
+       </figure>
+    </article>
+    <div class="FAQ">
+     <h2>Frequently asked questions</h2>
+     <div class="questions">
+          <div class="wrapper" id="wrapper0">
+            <button id="btn0">what is netflix ?<span class="fa-solid fa-plus" id="plus0"></span><span class="fa-solid fa-minus" id="minus0"></span></button>
+            <div class="para" id="para0">
+              <p>Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.</p>
+            <p>Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.</p>
+            </div>
+          </div>
+          <div class="wrapper" id="wrapper1" onmouseleave="">
+            <button id="btn1">how much does netflix cost?<span class="fa-solid fa-plus" id="plus1"></span><span class="fa-solid fa-minus" id="minus1"></span></button>
+            <div class="para" id="para1">
+              <p>Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.</p>
+            <p>Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.</p>
+            </div>
+          </div>
+          <div class="wrapper" id="wrapper2" onmouseleave="">
+            <!-- height 226px -->
+            <button id="btn2">where can i watch?<span class="fa-solid fa-plus" id="plus2"></span><span class="fa-solid fa-minus" id="minus2"></span></button>
+            <div class="para" id="para2">
+              <p>Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.</p>
+            <p>Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.</p>
+            </div>
+          </div>
+          <div class="wrapper" id="wrapper3" onmouseleave="">
+            <!-- height 226px -->
+            <button id="btn3">how do i cancel?<span class="fa-solid fa-plus" id="plus3"></span><span class="fa-solid fa-minus" id="minus3"></span></button>
+            <div class="para" id="para3">
+              <p>Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.</p>
+            <p>Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.</p>
+            </div>
+          </div>
+          <div class="wrapper" id="wrapper4" onmouseleave="">
+            <!-- height 226px -->
+            <button id="btn4">what can i watch on netflix?<span class="fa-solid fa-plus" id="plus4"></span><span class="fa-solid fa-minus" id="minus4"></span></button>
+            <div class="para" id="para4">
+              <p>Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.</p>
+            <p>Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.</p>
+            </div>
+          </div>
+          <div class="wrapper" id="wrapper5" onmouseleave="">
+            <!-- height 226px -->
+            <button id="btn5">is netflix good for kids<span class="fa-solid fa-plus" id="plus5"></span><span class="fa-solid fa-minus" id="minus5"></span></button>
+            <div class="para" id="para5">
+              <p>Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.</p>
+            <p>Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.</p>
+            </div>
+          </div>
+     </div>
+     
+    </div>
+    <footer>
+      <ul>
+        <li><a href="">FAQ</a></li>
+        <li><a href="">Investor relations</a></li>
+        <li><a href="">privacy</a></li>
+        <li><a href="">speed test</a></li>
+      </ul>
+      <ul>
+        <li><a href="">help center</a></li>
+        <li><a href="">jobs</a></li>
+        <li><a href="">cookies preferences</a></li>
+        <li><a href="">legal notice</a></li>
+      </ul>
+      <ul>
+        <li><a href="">acoount</a></li>
+        <li><a href="">ways to watch</a></li>
+        <li><a href="">corporate information</a></li>
+        <li><a href="">only on netflix</a></li>
+      </ul>
+      <ul>
+        <li><a href="">media center</a></li>
+        <li><a href="">terms of use</a></li>
+        <li><a href="">contact us</a></li>
+        <li><a href=""></a></li>
+      </ul>
+    </footer>
+  </main>
+</body>
+<script src="jquery-3.7.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+      $("input[type=text]").on("invalid",function(){
+                // $("input[type=text]").css("background-color","rgba(65, 65, 65, 0.397)");
+                alert('You must fill out the form!');
+      })
+    //   .css("box-shadow","black")
+    // .css("background-color","rgb(36, 36, 36)")
+    // 
+
+    $("#wrapper0").mouseout(function(){
+      $("#btn0").css("background-color","rgb(36, 36, 36)").css("box-shadow","0 0 0 black")
+    })
+    $("#wrapper0").mouseover(function(){
+      $("#btn0").css("background-color","rgb(63, 63, 63)").css("box-shadow","0 0 0 3px rgba(255, 0, 0, 0.404)")
+    })
+     $('#btn0').click(function(){
+      // $('#btn0').attr("id","BTN0")
+      // $('#btn0').text("")
+      // $('#btn0').attr({key:value,key2:value2})
+          $('#para0').slideToggle(200);
+          $('#para1').slideUp(100);
+          $('#para2').slideUp(100);
+          $('#para3').slideUp(100);
+          $('#para4').slideUp(100);
+          $('#para5').slideUp(100);
+          $('#btn0').css("box-shadow","0 0 0 3px rgba(255, 0, 0, 0.404)");
+          $('#btn0').css("background-color","rgb(63, 63, 63)");
+          $('#plus0').fadeToggle(20);
+          $('#plus1').fadeIn(20);
+          $('#plus2').fadeIn(20);
+          $('#plus3').fadeIn(20);
+          $('#plus4').fadeIn(20);
+          $('#plus5').fadeIn(20);
+      })
+
+      $("#wrapper1").mouseout(function(){
+      $("#btn1").css("background-color","rgb(36, 36, 36)").css("box-shadow","0 0 0 black")
+    })
+    $("#wrapper1").mouseover(function(){
+      $("#btn1").css("background-color","rgb(63, 63, 63)").css("box-shadow","0 0 0 3px rgba(255, 0, 0, 0.404)")
+    })
+    
+      $("#btn1").click(function(){
+          $("#para1").slideToggle(200)
+          $('#para0').slideUp(100)
+          $('#para2').slideUp(100)
+          $('#para3').slideUp(100)
+          $('#para4').slideUp(100)
+          $('#para5').slideUp(100)
+          $('#btn1').css("box-shadow","0 0 0 3px rgba(255, 0, 0, 0.404)")
+          $('#btn1').css("background-color","rgb(63, 63, 63)")
+          $('#plus1').fadeToggle(20);
+          $('#plus0').fadeIn(20);
+          $('#plus2').fadeIn(20);
+          $('#plus3').fadeIn(20);
+          $('#plus4').fadeIn(20);
+          $('#plus5').fadeIn(20);
+      })
+
+      $("#wrapper2").mouseout(function(){
+      $("#btn2").css("background-color","rgb(36, 36, 36)").css("box-shadow","0 0 0 black")
+    })
+    $("#wrapper2").mouseover(function(){
+      $("#btn2").css("background-color","rgb(63, 63, 63)").css("box-shadow","0 0 0 3px rgba(255, 0, 0, 0.404)")
+    })
+      $("#btn2").click(function(){
+          $("#para2").slideToggle(200)
+          $('#para1').slideUp(100)
+          $('#para0').slideUp(100)
+          $('#para3').slideUp(100)
+          $('#para4').slideUp(100)
+          $('#para5').slideUp(100)
+          $('#btn2').css("box-shadow","0 0 0 3px rgba(255, 0, 0, 0.404)")
+          $('#btn2').css("background-color","rgb(63, 63, 63)")
+          $('#plus2').fadeToggle(20);
+          $('#plus1').fadeIn(20);
+          $('#plus0').fadeIn(20);
+          $('#plus3').fadeIn(20);
+          $('#plus4').fadeIn(20);
+          $('#plus5').fadeIn(20);
+          })
+
+          $("#wrapper3").mouseout(function(){
+      $("#btn3").css("background-color","rgb(36, 36, 36)").css("box-shadow","0 0 0 black")
+    })
+    $("#wrapper3").mouseover(function(){
+      $("#btn3").css("background-color","rgb(63, 63, 63)").css("box-shadow","0 0 0 3px rgba(255, 0, 0, 0.404)")
+    })
+          $("#btn3").click(function(){
+          $("#para3").slideToggle(200)
+          $('#para1').slideUp(100)
+          $('#para2').slideUp(100)
+          $('#para0').slideUp(100)
+          $('#para4').slideUp(100)
+          $('#para5').slideUp(100)
+          $('#btn3').css("box-shadow","0 0 0 3px rgba(255, 0, 0, 0.404)")
+          $('#btn3').css("background-color","rgb(63, 63, 63)")
+          $('#plus3').fadeToggle(20);
+          $('#plus1').fadeIn(20);
+          $('#plus2').fadeIn(20);
+          $('#plus0').fadeIn(20);
+          $('#plus4').fadeIn(20);
+          $('#plus5').fadeIn(20);
+          })
+
+          $("#wrapper4").mouseout(function(){
+      $("#btn4").css("background-color","rgb(36, 36, 36)").css("box-shadow","0 0 0 black")
+    })
+    $("#wrapper4").mouseover(function(){
+      $("#btn4").css("background-color","rgb(63, 63, 63)").css("box-shadow","0 0 0 3px rgba(255, 0, 0, 0.404)")
+    })
+          $("#btn4").click(function(){
+          $("#para4").slideToggle(200)
+          $('#para1').slideUp(100)
+          $('#para2').slideUp(100)
+          $('#para3').slideUp(100)
+          $('#para5').slideUp(100)
+          $('#para0').slideUp(100)
+          $('#btn4').css("box-shadow","0 0 0 3px rgba(255, 0, 0, 0.404)")
+          $('#btn4').css("background-color","rgb(63, 63, 63)")
+          $('#plus4').fadeToggle(20);
+          $('#plus1').fadeIn(20);
+          $('#plus2').fadeIn(20);
+          $('#plus3').fadeIn(20);
+          $('#plus0').fadeIn(20);
+          $('#plus5').fadeIn(20);
+          })
+
+          $("#wrapper5").mouseout(function(){
+      $("#btn5").css("background-color","rgb(36, 36, 36)").css("box-shadow","0 0 0 black")
+    })
+    $("#wrapper5").mouseover(function(){
+      $("#btn5").css("background-color","rgb(63, 63, 63)").css("box-shadow","0 0 0 3px rgba(255, 0, 0, 0.404)")
+    })
+          $("#btn5").click(function(){
+          $("#para5").slideToggle(200)
+          $('#para1').slideUp(100)
+          $('#para2').slideUp(100)
+          $('#para3').slideUp(100)
+          $('#para4').slideUp(100)
+          $('#para0').slideUp(100)
+          $('#btn5').css("box-shadow","0 0 0 3px rgba(255, 0, 0, 0.404)")
+          $('#btn5').css("background-color","rgb(63, 63, 63)")
+          $('#plus5').fadeToggle(20);
+          $('#plus1').fadeIn(20);
+          $('#plus2').fadeIn(20);
+          $('#plus3').fadeIn(20);
+          $('#plus4').fadeIn(20);
+          $('#plus0').fadeIn(20);
+          })
+  })
+</script>
+</html>
+
